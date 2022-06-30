@@ -7,10 +7,10 @@ type SDate : DateTime;
 type LText : String(1024);
 
 
-entity Developments {
+entity Projects {
     key UUID               : UUID;
         REVIEWS            : Composition of many Reviews
-                                 on REVIEWS.DEVELOPMENT = $self;
+                                 on REVIEWS.PROJECT = $self;
         PARTNER            : BusinessKey;
         LOG_DATE           : SDate;
         COUNTRY            : Country;
@@ -23,8 +23,9 @@ entity Developments {
 
 entity Reviews {
 
-    key DEVELOPMENT : Association to Developments;
     key UUID        : UUID;
+     PROJECT : Association to Projects;
+
         LANGU       : String(2);
         Comment     : LText;
 
