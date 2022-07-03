@@ -1,0 +1,10 @@
+{
+  "name": "app-deployer",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node node_modules/@sap/html5-app-deployer/index.js"
+  },
+  "dependencies": {
+    "@sap/html5-app-deployer": "2.3.1"
+  }
+}
