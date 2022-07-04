@@ -1,0 +1,22 @@
+{
+  "generator-template-ui5-project": {
+    "projectname": "citizenui",
+    "namespaceUI5": "com.sachinscloud",
+    "platform": "SAP HTML5 Application Repository service for SAP BTP",
+    "viewtype": "XML",
+    "ui5libs": "Content delivery network (SAPUI5)",
+    "newdir": false,
+    "codeassist": false,
+    "namespaceURI": "com/sachinscloud",
+    "opa5pos": [
+      "Main"
+    ],
+    "opa5Journeys": [
+      "Main"
+    ],
+    "uimodules": [
+      "uimodule"
+    ],
+    "setupCompleted": true
+  }
+}

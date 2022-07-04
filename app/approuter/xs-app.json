@@ -1,0 +1,8 @@
+{
+  "welcomeFile": "comsachinscloudcitizenui/",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": []
+}
