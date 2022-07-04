@@ -4,5 +4,20 @@
   "logout": {
     "logoutEndpoint": "/do/logout"
   },
-  "routes": []
+  "routes": [
+    {
+      "source": "^/app/(.*)$",
+      "target": "comsachinscloudcitizenui/$1",
+      "service": "html5-apps-repo-rt",
+      "cacheControl": "no-cache",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^(/.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "cacheControl": "no-cache",
+      "authenticationType": "xsuaa"
+    }
+  ]
 }
