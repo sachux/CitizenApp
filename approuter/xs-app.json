@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "comsachinscloudcitizenui/",
+  "welcomeFile": "/app/index.html",
   "authenticationMethod": "none",
   "logout": {
     "logoutEndpoint": "/do/logout"
