@@ -1,7 +1,7 @@
 ---
 _schema-version: '3.1'
 ID: CitizenApp
-version: 1.0.0
+version: 1.0.1
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
@@ -37,6 +37,40 @@ modules:
     requires:
       - name: CitizenApp-db
 
+  - name: CitizenApp-app
+    type: nodejs
+    path: approuter
+    build-parameters:
+      ignore: ["node_modules/", "package-lock.json"]
+    parameters:
+      buildpack: nodejs_buildpack
+      disk-quota: 512M
+      memory: 512M
+    requires:
+      - name: CitizenApp-uaa
+      - name: CitizenApp-html5-repo-runtime
+    properties:
+      SESSION_TIMEOUT: 30
+      COOKIES: '{"SameSite": "None"}'
+      SECURE_SESSION_COOKIE: true
+      INCOMING_CONNECTION_TIMEOUT: 600000
+
+  - name: CitizenApp-app-deployer
+    type: com.sap.html5.application-content
+    path: app/deployer
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: CitizenApp-html5-repo-host
+    build-parameters:
+      ignore: ["node_modules/", "package-lock.json"]
+      build-parameters:
+      builder: custom
+      commands:
+        - npm install --prefix
+        - npm run build:uimodule --prefix ..
+    
 resources:
   - name: CitizenApp-db
     type: com.sap.xs.hdi-container
@@ -45,3 +79,35 @@ resources:
       service-plan: hdi-shared
     properties:
       hdi-service-name: ${service-name}
+
+  - name: CitizenApp-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+      config:
+        xsappname: CitizenApp-${space}
+        tenant-mode: dedicated
+
+  - name: CitizenApp-html5-repo-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: app-runtime
+      service: html5-apps-repo
+
+  - name: CitizenApp-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: app-host
+      service: html5-apps-repo
+  
+  - name: CitizenApp_destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: lite
+      service: destination
+      config:
+        HTML5Runtime_enabled: true
+        version: 1.0.0
+
