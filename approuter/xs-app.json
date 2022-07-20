@@ -13,6 +13,14 @@
       "authenticationType": "xsuaa"
     },
     {
+      "source": "/api/(.*)$",
+      "target": "$1",
+      "authenticationType": "xsuaa",
+      "csrfProtection":false,
+      "cacheControl": "no-cache",
+      "destination": "citizen-api-destination"
+    },
+    {
       "source": "^(/.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",

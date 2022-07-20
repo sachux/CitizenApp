@@ -2,10 +2,12 @@
   "welcomeFile": "/index.html",
   "routes": [
     {
-      "source": "^(.*)",
+      "source": "/api/(.*)",
       "target": "$1",
       "authenticationType": "xsuaa",
-      "service": "html5-apps-repo-rt"
+      "csrfProtection":false,
+      "cacheControl": "no-cache",
+      "destination": "citizen-api-destination"
     }
   ]
 }
