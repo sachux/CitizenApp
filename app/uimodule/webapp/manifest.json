@@ -5,10 +5,19 @@
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
-      "version": "0.0.2"
+      "version": "0.0.3"
     },
     "title": "{{appTitle}}",
-    "description": "{{appDescription}}"
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "citizen-service": {
+          "uri": "/api/catalog/",
+          "type": "OData",
+          "settings": {
+              "odataVersion": "4.0"
+          }
+      }
+    }
   },
   "sap.ui": {
     "technology": "UI5",
@@ -44,7 +53,17 @@
         "settings": {
           "bundleName": "com.sachinscloud.citizenui.i18n.i18n"
         }
-      }
+      },
+      "CitizenModel": {
+        "settings": {
+            "operationMode": "Server",
+            "autoExpandSelect": true,
+            "synchronizationMode": "None",
+            "updateGroupId": "CITIZEN"
+        },
+        "dataSource": "citizen-service",
+        "preload": true
+    }
     },
     "resources": {
       "css": [
