@@ -23,11 +23,13 @@ modules:
       commands:
         - npm install
     provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+      - name: citizen-api-destination # required by consumers of CAP services (e.g. approuter)
         properties:
-          srv-url: ${default-url}
+          url: ${default-url}
     requires:
       - name: CitizenApp-db
+      - name: citizen-api-destination
+
 
   - name: CitizenApp-db-deployer
     type: hdb
@@ -49,6 +51,14 @@ modules:
     requires:
       - name: CitizenApp-uaa
       - name: CitizenApp-html5-repo-runtime
+      - name: citizen-api-destination
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          strictSSL: false
+          name: citizen-api-destination
+          url: ~{url}
+          timeout: 300000
     properties:
       SESSION_TIMEOUT: 30
       COOKIES: '{"SameSite": "None"}'
@@ -103,11 +113,5 @@ resources:
       service: html5-apps-repo
   
   - name: CitizenApp_destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service-plan: lite
-      service: destination
-      config:
-        HTML5Runtime_enabled: true
-        version: 1.0.0
+    type: destination
 
