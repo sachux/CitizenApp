@@ -1,6 +1,7 @@
 <mvc:View
     controllerName="com.sachinscloud.citizenui.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     displayBlock="true"
     xmlns="sap.m"
 >
@@ -8,7 +9,82 @@
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
-                    <content />
+                    <content>
+                    <Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: 'CitizenModel>/Projects',
+			sorter: {
+				path: 'TITLE'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Projects" level="H2"/>
+					<ToolbarSpacer />
+					<ComboBox id="idPopinLayout"
+						placeholder="Popin layout options"
+						change="onPopinLayoutChanged">
+						<items>
+							<core:Item  text="Block"
+								key="Block"/>
+							<core:Item  text="Grid Large"
+								key="GridLarge"/>
+							<core:Item  text="Grid Small"
+								key="GridSmall"/>
+						</items>
+					</ComboBox>
+					<Label text="Sticky options:" />
+					<CheckBox text="ColumnHeaders"
+						select="onSelect"/>
+					<CheckBox text="HeaderToolbar"
+						select="onSelect"/>
+					<CheckBox text="InfoToolbar"
+						select="onSelect"/>
+					<ToggleButton id="toggleInfoToolbar"
+						text="Hide/Show InfoToolbar"
+						press="onToggleInfoToolbar" />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Wide range of projects"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Project" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="PARTNER" />
+			</Column>
+			<Column
+				demandPopin="true"
+				hAlign="End">
+				<Text text="PROPOSED_COML_DATE" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="{CitizenModel>TITLE}"
+						text="{CitizenModel>DESC}"/>
+					<Text
+						text="{CitizenModel>PARTNER}" />
+					<Text
+						text="{CitizenModel>PROPOSED_COML_DATE}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+                    </content>
                 </Page>
             </pages>
         </App>
