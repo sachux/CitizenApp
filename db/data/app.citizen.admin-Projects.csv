@@ -1,2 +1,8 @@
-UUID,PARTNER,LOG_DATE,COUNTRY_CODE,TITLE,DESC,PROPOSED_COML_DATE,COMPLETION_DATE
-63ebe362-64c1-40cc-ab25-1d1272ec430c,Govt. of India,2022-01-21,IN,Road Wideing, Road Width will be increased to 20 meters wide,2023-01-22, 
+UUID,PROJECT_AUTHORITY,LOG_DATE,COUNTRY_CODE,TITLE,DESC,TYPE,COST,SECTOR,STATUS,LOCATION,PROPOSED_COML_DATE,COMPLETION_DATE
+63ebe362-64c1-40cc-ab25-1d1272ec430a,Water Resources Department-Maharashtra,2022-01-21,IN,Setting up a 60 MW Tillari hydel power unit (Stage-II) at Chandgad in Kolhapur,Setting up a 60 MW Tillari hydel power unit (Stage-II) at Chandgad in Kolhapur,Government Infrastructure Projects ,340.45,Energy,Pre-construction Stage,Maharashtra,2023-01-22, 
+63ebe362-64c1-40cc-ab25-1d1272ec430b,Haryana Urban Development Authority,2022-01-21,IN,Storm Water Drainage Scheme (Gurgaon - Sector 81-98),Storm Water Drainage Scheme (Gurgaon - Sector 81-98),Government Infrastructure Projects,223.56,Water Sanitation,Under Construction,Haryana,2023-01-22, 
+63ebe362-64c1-40cc-ab25-1d1272ec430c,Haryana Urban Development Authority,2022-01-21,IN,Water Supply (Gurgaon Sector 58-115) Project - (Zone IV to VIII),Water Supply (Gurgaon Sector 58-115) Project - (Zone IV to VIII),Government Infrastructure Projects,123.50,Water Sanitation,Under Construction,Haryana,2023-01-22, 
+63ebe362-64c1-40cc-ab25-1d1272ec430d,Public Works Department,2022-01-21,IN,Four laning of Pharenda-Jarwal road in length of 46.4 km in Gonda district,Four laning of Pharenda-Jarwal road in length of 46.4 km in Gonda district,Government Infrastructure Projects,560.90,Transport,Under Construction,Uttar Pradesh,2023-01-22, 
+63ebe362-64c1-40cc-ab25-1d1272ec430e,NHPC Limited,2022-01-21,IN,High Power Short Circuit Test Facility,High Power Short Circuit Test Facility,Government Infrastructure Projects,440.90,Energy,Under Construction,Madhya Pradesh,2023-01-22, 
+63ebe362-64c1-40cc-ab25-1d1272ec430f,National Highways Authority of India (NHAI),2022-01-21,IN,2 laning with PSS of Salasar to Haryana,2 laning with PSS of Salasar to Haryana,Government Infrastructure Projects,1200.90,Transport,Under Construction,Rajasthan,2023-01-22, 
+
