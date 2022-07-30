@@ -2,6 +2,8 @@
     controllerName="com.sachinscloud.citizenui.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
+	xmlns:micro="sap.suite.ui.microchart"
+	xmlns:layout="sap.ui.layout"
     displayBlock="true"
     xmlns="sap.m"
 >
@@ -10,79 +12,113 @@
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
-                    <Table id="idProductsTable"
-		inset="false"
-		items="{
-			path: 'CitizenModel>/Projects',
-			sorter: {
-				path: 'TITLE'
-			}
-		}">
-		<headerToolbar>
-			<OverflowToolbar>
-				<content>
-					<Title text="Projects" level="H2"/>
-					<ToolbarSpacer />
-					<ComboBox id="idPopinLayout"
-						placeholder="Popin layout options"
-						change="onPopinLayoutChanged">
-						<items>
-							<core:Item  text="Block"
-								key="Block"/>
-							<core:Item  text="Grid Large"
-								key="GridLarge"/>
-							<core:Item  text="Grid Small"
-								key="GridSmall"/>
-						</items>
-					</ComboBox>
-					<Label text="Sticky options:" />
-					<CheckBox text="ColumnHeaders"
-						select="onSelect"/>
-					<CheckBox text="HeaderToolbar"
-						select="onSelect"/>
-					<CheckBox text="InfoToolbar"
-						select="onSelect"/>
-					<ToggleButton id="toggleInfoToolbar"
-						text="Hide/Show InfoToolbar"
-						press="onToggleInfoToolbar" />
-				</content>
-			</OverflowToolbar>
-		</headerToolbar>
-		<infoToolbar>
-			<OverflowToolbar>
-				<Label text="Wide range of projects"/>
-			</OverflowToolbar>
-		</infoToolbar>
-		<columns>
-			<Column
-				width="12em">
-				<Text text="Project" />
-			</Column>
-			<Column
-				minScreenWidth="Tablet"
-				demandPopin="true">
-				<Text text="PARTNER" />
-			</Column>
-			<Column
-				demandPopin="true"
-				hAlign="End">
-				<Text text="PROPOSED_COML_DATE" />
-			</Column>
-		</columns>
-		<items>
-			<ColumnListItem vAlign="Middle">
-				<cells>
-					<ObjectIdentifier
-						title="{CitizenModel>TITLE}"
-						text="{CitizenModel>DESC}"/>
-					<Text
-						text="{CitizenModel>PARTNER}" />
-					<Text
-						text="{CitizenModel>PROPOSED_COML_DATE}" />
-				</cells>
-			</ColumnListItem>
-		</items>
-	</Table>
+
+						<Text text="Semantic colors in interactive mode" class="sapUiSmallMargin">
+								<layoutData>
+									<layout:GridData span="XL12 L12 M12 S12"/>
+								</layoutData>
+							</Text>
+							<FlexBox width="20rem" height="10rem" alignItems="SpaceBetween" justifyContent="SpaceBetween">
+								<items>
+									<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+										<micro:segments>
+											<micro:InteractiveDonutChartSegment label="Under Construction" value="40.0" displayedValue="40.0%" color="Error"/>
+											<micro:InteractiveDonutChartSegment label="Pre-construction Stage" value="21.5" displayedValue="21.5%" color="Critical"/>
+											<micro:InteractiveDonutChartSegment label="Completed" value="10.5" displayedValue="38.5%" color="Good"/>
+										</micro:segments>
+									</micro:InteractiveDonutChart>
+
+									<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+										<micro:segments>
+											<micro:InteractiveDonutChartSegment label="Haryana" value="40.0" displayedValue="40.0%" color="Error"/>
+											<micro:InteractiveDonutChartSegment label="Maharastra" value="21.5" displayedValue="21.5%" color="Critical"/>
+											<micro:InteractiveDonutChartSegment label="Uttar Pradesh" value="10.5" displayedValue="38.5%" color="Good"/>
+											<micro:InteractiveDonutChartSegment label="Madhya Pradesh" value="10.5" displayedValue="38.5%" />
+										</micro:segments>
+									</micro:InteractiveDonutChart>
+
+									<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+										<micro:segments>
+											<micro:InteractiveDonutChartSegment label="Under Construction" value="40.0" displayedValue="40.0%" color="Error"/>
+											<micro:InteractiveDonutChartSegment label="Pre-construction Stage" value="21.5" displayedValue="21.5%" color="Critical"/>
+											<micro:InteractiveDonutChartSegment label="Completed" value="10.5" displayedValue="38.5%" color="Good"/>
+										</micro:segments>
+									</micro:InteractiveDonutChart>
+								</items>
+							</FlexBox>
+
+                    	<Table id="idProductsTable"
+							inset="false"
+							items="{
+								path: 'CitizenModel>/Projects',
+								sorter: {
+									path: 'TITLE'
+								}
+							}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Projects" level="H2"/>
+										
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<infoToolbar>
+								<OverflowToolbar>
+									<Label text="Wide range of projects"/>
+								</OverflowToolbar>
+							</infoToolbar>
+							<columns>
+								<Column
+									width="30em">
+									<Text text="Project" />
+								</Column>
+								<Column
+									minScreenWidth="Tablet"
+									demandPopin="true">
+									<Text text="Project Authority" />
+								</Column>
+								<Column
+									demandPopin="true"
+									hAlign="End">
+									<Text text="Proposed Completion Date" />
+								</Column>
+								<Column
+									demandPopin="true"
+									hAlign="End">
+									<Text text="Cost" />
+								</Column>
+								<Column
+									demandPopin="true"
+									hAlign="End">
+									<Text text="Location" />
+								</Column>
+								<Column
+									demandPopin="true"
+									hAlign="End">
+									<Text text="Status" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem vAlign="Middle">
+									<cells>
+										<ObjectIdentifier
+											title="{CitizenModel>TITLE}"
+											text="{CitizenModel>TYPE}"/>
+										<Text
+											text="{CitizenModel>PROJECT_AUTHORITY}" />
+										<Text
+											text="{CitizenModel>PROPOSED_COML_DATE}" />
+										<Text
+											text="{CitizenModel>COST}" />
+										<Text
+											text="{CitizenModel>LOCATION}" />
+										<Text
+											text="{CitizenModel>STATUS}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
 
                     </content>
                 </Page>
